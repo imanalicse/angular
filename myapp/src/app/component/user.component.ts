@@ -6,8 +6,17 @@ import { Component } from '@angular/core';
         <h1>Hello {{name}}</h1>
         <p><strong>{{email}}</strong></p>
         <p><strong>Address: </strong>{{address.street}} {{address.city}} {{address.state}}</p>
-        <h3>Hobbies</h3>
-        {{hobbies}}
+         
+        <button (click)="toggleHobbies()">{{showHobbies ? "Hide Hobbies" : "Show Hobbies"}}</button>
+          
+        <div *ngIf="showHobbies">
+            <h3>Hobbies</h3> 
+            <ul>
+                <li *ngFor="let hobby of hobbies">
+                    {{hobby}}
+                </li>
+            </ul>
+        </div>
         `,
 })
 export class UserComponent  {
@@ -15,10 +24,9 @@ export class UserComponent  {
     email: string;
     address: address;
     hobbies : string[];
+    showHobbies: boolean;
 
     constructor(){
-
-        console.log('Construction ran');
 
         this.name = 'John Doe';
         this.email = 'john@gmail.com';
@@ -28,6 +36,16 @@ export class UserComponent  {
             state: 'N/A'
         }
         this.hobbies = ['Music', 'Movies', 'Sport'];
+        this.showHobbies = false;
+    }
+
+    toggleHobbies(){
+
+        if(this.showHobbies==true){
+            this.showHobbies = false;
+        }else {
+            this.showHobbies = true;
+        }
     }
 }
 
