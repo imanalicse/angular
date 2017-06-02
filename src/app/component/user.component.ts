@@ -2,44 +2,9 @@ import { Component } from '@angular/core';
 import {PostsService } from '../services/posts.service';
 
 @Component({
+    moduleId:module.id,
     selector: 'user',
-    template: `
-        <h1>Hello {{name}}</h1>
-        <p><strong>{{email}}</strong></p>
-        <p><strong>Address: </strong>{{address.street}} {{address.city}} {{address.state}}</p>
-         
-        <button (click)="toggleHobbies()">{{showHobbies ? "Hide Hobbies" : "Show Hobbies"}}</button>
-          
-        <div *ngIf="showHobbies">
-            <h3>Hobbies</h3> 
-            <ul>
-                <li *ngFor="let hobby of hobbies; let i=index">
-                    {{hobby}} <button (click)="deleteHobby(i)">X</button>
-                </li>
-            </ul>
-            <form (submit)="addHobby(hobby.value)">
-                <label>Add Hobbies</label><br>
-                <input type="text" #hobby>
-            </form>
-        </div>
-        <h3>Edit User</h3>
-        <form>
-            <label>Name:</label><br>
-            <input type="text" name="name" [(ngModel)]="name"><br>
-            <label>Email:</label><br>
-            <input type="text" name="email" [(ngModel)]="email"><br>
-            <label>Street:</label><br>
-            <input type="text" name="address.street" [(ngModel)]="address.street"><br>
-            <label>City:</label><br>
-            <input type="text" name="address.city" [(ngModel)]="address.city"><br>
-            <label>State:</label><br>
-            <input type="text" name="address.state" [(ngModel)]="address.state"><br>
-        </form>
-
-        <h3>Posts</h3>
-        <div>
-        </div>
-        `,
+    templateUrl:'user.component.html',
     providers:[PostsService]
 })
 export class UserComponent  {
@@ -78,12 +43,11 @@ export class UserComponent  {
         }
     }
 
-    addHobby(hobby){
-        console.log(hobby);
+    addHobby(hobby : any){
         this.hobbies.push(hobby);
     }
 
-    deleteHobby(i){
+    deleteHobby(i : any){
         this.hobbies.splice(i, 1);
     }
 }
