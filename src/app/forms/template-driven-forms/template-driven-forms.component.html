@@ -12,6 +12,9 @@
                 <div [hidden]="!nameRef.errors.minlength">
                     Please enter at least 4 characters
                 </div>
+                <div [hidden]="!nameRef.errors.maxlength">
+                    Name should not more than 10 characters
+                </div>
             </div>
         </div>
         <div class="form-group">
@@ -37,7 +40,7 @@
                 </div>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button [disabled]="!userForm.form.valid" type="submit" class="btn btn-primary">Submit</button>
 
     </form>
 </div>

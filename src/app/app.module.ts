@@ -13,11 +13,7 @@ import { TemplateDrivenFormsComponent } from './forms/template-driven-forms/temp
     FormsModule,
     HttpModule,
     RouterModule.forRoot([
-      {
-        //path: 'forms/template-driven-forms',
-        path: '',
-        component: TemplateDrivenFormsComponent
-      }
+      { path: 'forms/template-driven-forms', component: TemplateDrivenFormsComponent }
     ])
   ],
   declarations: [
