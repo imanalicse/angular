@@ -14,7 +14,6 @@ export class TemplateDrivenFormsComponent implements OnInit {
     ngOnInit() {
     }
 
-    myName = 'Iman Ali';
 
     onSubmit(value:any) {
         console.log(value)

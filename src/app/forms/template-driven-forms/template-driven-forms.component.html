@@ -4,8 +4,11 @@
     <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm.value)">
         <div class="form-group">
             <label>Name</label>
-            <input type="text" class="form-control" name="name" [(ngModel)]="myName">
-            <p>{{myName}}</p>
+            <input type="text" #nameRef="ngModel" required class="form-control" name="name" ngModel>
+            <div [hidden]="nameRef.valid || nameRef.pristine" class="alert alert-danger">
+                Please enter name
+            </div>
+            <p>{{nameRef.className}}</p>
         </div>
         <div class="form-group">
             <label>Email</label>
