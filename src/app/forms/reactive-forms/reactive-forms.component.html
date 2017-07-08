@@ -5,6 +5,9 @@
     <div class="form-group">
       <label>Name</label>
       <input type="text" class="form-control" formControlName="name">
+      <div *ngIf="!userForm.find(name).valid" class="alert alert-danger">
+        Please enter name
+      </div>
     </div>
     <div class="form-group">
       <label>Email</label>
