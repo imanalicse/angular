@@ -1,15 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+import {FormsModule} from '@angular/forms';
 
 @Component({
-  selector: 'app-template-driven-forms',
-  templateUrl: './template-driven-forms.component.html',
-  styleUrls: ['./template-driven-forms.component.css']
+    selector: 'app-template-driven-forms',
+    templateUrl: './template-driven-forms.component.html',
+    styleUrls: ['./template-driven-forms.component.css']
 })
 export class TemplateDrivenFormsComponent implements OnInit {
 
-  constructor() { }
+    constructor() {
+    }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
+
+    myName = 'Iman Ali';
+
+    onSubmit(value:any) {
+        console.log(value)
+    }
 
 }
