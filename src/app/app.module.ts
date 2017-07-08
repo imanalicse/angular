@@ -14,7 +14,8 @@ import { TemplateDrivenFormsComponent } from './forms/template-driven-forms/temp
     HttpModule,
     RouterModule.forRoot([
       {
-        path: 'forms/template-driven-forms',
+        //path: 'forms/template-driven-forms',
+        path: '',
         component: TemplateDrivenFormsComponent
       }
     ])
