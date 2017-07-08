@@ -4,11 +4,15 @@
     <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm.value)">
         <div class="form-group">
             <label>Name</label>
-            <input type="text" #nameRef="ngModel" required class="form-control" name="name" ngModel>
-            <div [hidden]="nameRef.valid || nameRef.pristine" class="alert alert-danger">
-                Please enter name
+            <input type="text" #nameRef="ngModel" required minlength="4" maxlength="10" class="form-control" name="name" ngModel>
+            <div *ngIf="nameRef.errors && (nameRef.dirty || nameRef.touched)" class="alert alert-danger">
+                <div [hidden]="!nameRef.errors.required">
+                    Please enter name
+                </div>
+                <div [hidden]="!nameRef.errors.minlength">
+                    Please enter at least 4 characters
+                </div>
             </div>
-            <p>{{nameRef.className}}</p>
         </div>
         <div class="form-group">
             <label>Email</label>
@@ -25,7 +29,12 @@
             </div>
             <div class="form-group">
                 <label>PostalCode</label>
-                <input type="text" class="form-control" name="postalCode" ngModel>
+                <input type="text" #refPinCode="ngModel" pattern="^[0-9][0-9]{4}$" class="form-control" name="postalCode" ngModel>
+                <div *ngIf="refPinCode.errors && (refPinCode.dirty || refPinCode.touched)" class="alert alert-danger">
+                    <div [hidden]="!refPinCode.errors.pattern">
+                        Please enter a five digit number
+                    </div>
+                </div>
             </div>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
