@@ -6,8 +6,8 @@ import { RouterModule } from '@angular/router';
 
 
 import { AppComponent } from './app.component';
-import { TemplateDrivenFormsComponent } from './forms/template-driven-forms/template-driven-forms.component';
-import { ReactiveFormsComponent } from './forms/reactive-forms/reactive-forms.component';
+import { TemplateDrivenFormsComponent } from './form-area/template-driven-forms/template-driven-forms.component';
+import { ReactiveFormsComponent } from './form-area/reactive-forms/reactive-forms.component';
 
 @NgModule({
   imports: [

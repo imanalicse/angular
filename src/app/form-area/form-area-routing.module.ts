@@ -14,4 +14,4 @@ import { RouterModule } from '@angular/router';
   providers: [],
   bootstrap: []
 })
-export class FormsModule { }
+export class FormAreaRoutingModule { }
