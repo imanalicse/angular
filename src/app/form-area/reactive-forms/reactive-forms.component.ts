@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-reactive-forms',
@@ -8,28 +8,26 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class ReactiveFormsComponent implements OnInit {
 
-  formGroup: FormGroup;
+  userForm: FormGroup;
 
-  userForm = new FormGroup({
-    name: new FormControl('Iman', [Validators.required, Validators.minLength(4), Validators.maxLength(10)]),
-    email: new FormControl(),
-    address: new FormGroup({
-      street: new FormControl(),
-      city: new FormControl(),
-      postalCode: new FormControl(null, Validators.pattern('^[0-9][0-9]{4}$'))
-    })
-  });
-
-
-
-  constructor() { }
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+
+    this.userForm = this.formBuilder.group({
+      name: ['Iman', [Validators.required, Validators.minLength(4), Validators.maxLength(10)]],
+      email: [],
+      address: this.formBuilder.group({
+        street: [],
+        city: [],
+        postalCode: [null, Validators.pattern('^[0-9][0-9]{4}$')]
+      })
+    });
     //console.log(this.userForm.controls['name'].hasError('required'))
   }
 
   onSubmit(){
-    console.log(this.userForm.value);
+    console.log(this.userForm);
   }
 
 }
