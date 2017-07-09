@@ -18,7 +18,7 @@ import { ReactiveFormsComponent } from './forms/reactive-forms/reactive-forms.co
     RouterModule.forRoot([
       { path: 'forms/template-driven-forms', component: TemplateDrivenFormsComponent },
       { path: 'forms/reactive-forms', component: ReactiveFormsComponent }
-    ])
+    ]),
   ],
   declarations: [
     AppComponent,
