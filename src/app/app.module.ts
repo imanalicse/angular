@@ -22,9 +22,7 @@ import {FormAreaModule} from "./form-area/form-area.module";
         ]),
     ],
     declarations: [
-        AppComponent,
-        TemplateDrivenFormsComponent,
-        ReactiveFormsComponent,
+        AppComponent
     ],
     providers: [],
     bootstrap: [AppComponent]
