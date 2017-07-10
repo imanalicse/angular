@@ -2,7 +2,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
-import {RouterModule} from '@angular/router';
+import {RouterModule, Router} from '@angular/router';
 
 
 import {AppComponent} from './app.component';
@@ -17,10 +17,9 @@ import {FormAreaModule} from "./form-area/form-area.module";
         ReactiveFormsModule,
         HttpModule,
         FormAreaModule,
-        /*RouterModule.forRoot([
-            {path: 'forms/template-driven-forms', component: TemplateDrivenFormsComponent},
-            {path: 'forms/reactive-forms', component: ReactiveFormsComponent}
-        ]),*/
+        RouterModule.forRoot([
+            {path: '', component: AppComponent}
+        ]),
     ],
     declarations: [
         AppComponent,
