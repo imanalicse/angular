@@ -1,15 +1,14 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-import { RouterModule } from '@angular/router';
+import {NgModule} from "@angular/core";
+import {FormAreaRoutingModule} from "./form-area-routing.module";
+import {FormAreaComponent} from "./form-area.component";
 
 
 @NgModule({
   imports: [
+      FormAreaRoutingModule
   ],
   declarations: [
-
+    FormAreaComponent
   ],
   providers: [],
   bootstrap: []
