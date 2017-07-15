@@ -1,6 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {RouterModule, Router} from '@angular/router';
 
@@ -13,8 +12,6 @@ import {FormAreaModule} from "./form-area/form-area.module";
 @NgModule({
     imports: [
         BrowserModule,
-        FormsModule,
-        ReactiveFormsModule,
         HttpModule,
         FormAreaModule,
         RouterModule.forRoot([
