@@ -1,0 +1,177 @@
+<form [formGroup]="form">
+  <div fxLayout fxLayoutAlign="center center">
+    <div class="boxed-content" fxFlex="725px" fxFlex.sm="540px">
+      <header fxLayout fxLayoutAlign="space-between center">
+        <h2>Edit Profile</h2>
+        <div class="button-group">
+          <div fxLayout fxLayoutGap="12px" fxLayoutGap.xs="0">
+            <button (click)="onClickSaveButton()" md-button class="btn-edit">Save</button>
+            <button (click)="onClickCancelButton()" md-button class="btn-cancel">cancel</button>
+          </div>
+        </div>
+      </header>
+      <div class="inner-content">
+        <div fxLayout class="location-container">
+          <div fxFlex="42px" style="padding-top: 8px;">
+            <md-icon>person</md-icon>
+          </div>
+          <div fxFlex>
+            <div class="two-column" fxLayout fxLayout.xs="column" fxLayoutGap="30px" fxLayoutGap.xs="0">
+              <div fxFlex>
+                <md-input-container>
+                  <input [(ngModel)]="customer.firstName" mdInput type="text" placeholder="First Name*" formControlName="firstName">
+                  <md-error *ngIf="form.controls.firstName.invalid">
+                    {{form.controls.firstName.errors.message}}
+                  </md-error>
+                </md-input-container>
+              </div>
+              <div fxFlex>
+                <md-input-container>
+                  <input [(ngModel)]="customer.lastName" mdInput type="text" placeholder="Last Name" formControlName="lastName">
+                </md-input-container>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div fxLayout class="location-container">
+          <div fxFlex="42px" style="padding-top: 8px;">
+            <md-icon>location_on</md-icon>
+          </div>
+          <div fxFlex>
+            <div class="two-column" fxLayout fxLayout.xs="column" fxLayoutGap="30px" fxLayoutGap.xs="0">
+              <div fxFlex>
+                <md-input-container>
+                  <input [(ngModel)]="customer.address.addressLine1" mdInput type="text" placeholder="Address Line 1*" formControlName="addressline1">
+                  <md-error *ngIf="form.controls.addressline1.invalid">
+                    {{form.controls.addressline1.errors.message}}
+                  </md-error>
+                </md-input-container>
+              </div>
+              <div fxFlex>
+                <md-input-container>
+                  <input [(ngModel)]="customer.address.addressLine2" mdInput type="text" placeholder="Address Line 2" formControlName="addressline2">
+                </md-input-container>
+              </div>
+            </div>
+            <div class="two-column" fxLayout fxLayout.xs="column" fxLayoutGap="30px" fxLayoutGap.xs="0">
+              <div fxFlex>
+                <md-input-container>
+                  <input [(ngModel)]="customer.address.city" mdInput type="text" placeholder="City" formControlName="city">
+                </md-input-container>
+              </div>
+            </div>
+            <div class="two-column" fxLayout fxLayout.xs="column" fxLayoutGap="30px" fxLayoutGap.xs="0">
+              <div fxFlex>
+                <md-input-container>
+                  <input [(ngModel)]="customer.address.postCode" mdInput type="text" placeholder="Post Code*" formControlName="postcode">
+                  <md-error *ngIf="form.controls.postcode.invalid">
+                    {{form.controls.postcode.errors.message}}
+                  </md-error>
+                </md-input-container>
+              </div>
+              <div fxFlex style="padding-top: 11px;">
+                <md-select [(ngModel)]="this.customer.stateId" placeholder="State*" formControlName="stateid">
+                  <md-option *ngFor="let state of states"  [value]="state.id">{{state.name}}</md-option>
+                </md-select>
+                <md-error class="error-msg" *ngIf="form.controls.stateid.invalid">
+                  {{form.controls.stateid.errors.message}}
+                </md-error>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div fxLayout class="phone-block">
+          <div fxFlex="42px">
+            <md-icon>phone_in_talk</md-icon>
+          </div>
+          <div fxFlex>
+            <md-input-container>
+              <input [(ngModel)]="customer.mobile" mdInput type="text" placeholder="Mobile" formControlName="mobile">
+              <md-error *ngIf="form.controls.mobile.invalid">
+                {{form.controls.mobile.errors.message}}
+              </md-error>
+            </md-input-container>
+          </div>
+        </div>
+        <div fxLayout>
+          <div fxFlex="42px">
+            <md-icon>email</md-icon>
+          </div>
+          <div fxFlex>
+            <h4 md-line>{{customer.emailAddress}}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<!--
+<form [formGroup]="form">
+<div class="tab-container">
+<div>
+<md-card class="tab-heading" fxLayout fxLayoutAlign="space-between center">
+<div>
+<md-card-title class="mb-0">
+<input [(ngModel)]="customer.firstName" mdInput type="text" placeholder="First Name" formControlName="firstName">
+<md-error *ngIf="form.controls.firstName.invalid">
+{{form.controls.firstName.errors.message}}
+</md-error>
+<input [(ngModel)]="customer.lastName" mdInput type="text" placeholder="Last Name" formControlName="lastName">
+</md-card-title>
+<md-card-subtitle>{{customer.customerCode}}</md-card-subtitle>
+</div>
+</md-card>
+<md-divider></md-divider>
+<div class="tab-content" fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="30px"
+fxLayoutGap.xs="0">
+<div class="item item-1" fxFlex="75%" fxLayoutGap="28px" fxLayoutGap.xs="0">
+<div fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="28px" fxLayoutGap.xs="0">
+<div class="item" fxFlex="224px">
+<md-card>
+<img md-card-image src="../assets/images/default-large.png" alt="">
+</md-card>
+</div>
+<div class="item" fxFlex>
+<md-list>
+<md-list-item>
+<md-icon md-list-icon>location_on</md-icon>
+<h4 md-line></h4>
+
+<input [(ngModel)]="customer.address.addressLine1" mdInput type="text" placeholder="" formControlName="addressline1">
+
+
+<input [(ngModel)]="customer.address.addressLine2" mdInput type="text" placeholder="Address Line 2" formControlName="addressline2">
+
+<input [(ngModel)]="customer.address.postCode" mdInput type="text" placeholder="Post Code*" formControlName="postcode">
+<md-error *ngIf="form.controls.postcode.invalid">
+{{form.controls.postcode.errors.message}}
+</md-error>
+
+<md-select [(ngModel)]="customer.address.state.id" placeholder="State*" formControlName="stateid">
+<md-option *ngFor="let state of states" value={{state.id}}>{{state.name}}</md-option>
+</md-select>
+<md-error *ngIf="form.controls.stateid.invalid">
+{{form.controls.stateid.errors.message}}
+</md-error>
+
+
+<input [(ngModel)]="customer.address.city" mdInput type="text" placeholder="City" formControlName="city">
+
+</md-list-item>
+<md-list-item>
+<md-icon md-list-icon>email</md-icon>
+<h4 md-line><a href="{{href}}"></a></h4>
+</md-list-item>
+<md-list-item>
+<md-icon md-list-icon>phone_in_talk</md-icon>
+<h4 md-line><input [(ngModel)]="customer.mobile" mdInput type="text" placeholder="Mobile" formControlName="mobile"></h4>
+</md-list-item>
+</md-list>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</form>-->

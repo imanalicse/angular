@@ -1,0 +1,3 @@
+<md-spinner *ngIf="requesting"></md-spinner>
+<app-customer-details-view [customer]="customer" [hasRequestError]="hasRequestError" *ngIf="enableViewPanel && !requesting"></app-customer-details-view>
+<app-customer-details-update [customer]="customer" [states]="states" *ngIf="enableUpdatePanel"></app-customer-details-update>

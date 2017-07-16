@@ -1,0 +1,76 @@
+<div class="tab-container">
+    <div *ngIf="!hasRequestError">
+        <md-card class="tab-heading" fxLayout fxLayoutAlign="space-between center">
+            <div>
+                <md-card-title class="mb-0">{{customer.firstName + " " + customer.lastName}}</md-card-title>
+                <md-card-subtitle>{{customer.customerCode}}</md-card-subtitle>
+            </div>
+        </md-card>
+        <md-divider></md-divider>
+        <div class="tab-content" fxLayout fxLayout.md="column" fxLayout.sm="column" fxLayoutAlign="center" fxLayoutGap="30px" fxLayoutGap.md="0" fxLayoutGap.sm="0">
+            <div fxFlex="75%" fxFlex.md="100%" fxFlex.sm="100%">
+                <div fxLayout fxLayout.sm="column" fxLayoutAlign="center" fxLayoutGap="28px" fxLayoutGap.md="15px" fxLayoutGap.sm="0">
+                    <div fxFlex>
+                        <div fxLayout fxLayout.sm="column" fxLayoutAlign="center" fxLayoutGap="28px" fxLayoutGap.md="15px" fxLayoutGap.sm="15px">
+                            <div fxFlex="224px" fxFlex.md="150px" fxFlex.sm="100%">
+                                <md-card>
+                                    <img md-card-image src="{{customer.photoPath}}" alt="">
+                                </md-card>
+                            </div>
+                            <div fxFlex>
+                                <md-list>
+                                    <md-list-item>
+                                        <md-icon md-list-icon>location_on</md-icon>
+                                        <h4 md-line>{{ customer.displayAddress}}</h4>
+                                        <a md-line class="map-view" target="_blank" [routerLink]="[mapRouterLink]">
+                                            <md-icon>map</md-icon> View on Map
+                                        </a>
+                                    </md-list-item>
+                                    <md-list-item>
+                                        <md-icon md-list-icon>email</md-icon>
+                                        <h4 md-line>{{customer.emailAddress}}</h4>
+                                    </md-list-item>
+                                    <md-list-item>
+                                        <md-icon md-list-icon>phone_in_talk</md-icon>
+                                        <h4 md-line>{{customer.mobile}}</h4>
+                                    </md-list-item>
+                                </md-list>
+                            </div>
+                        </div>
+                    </div>
+                    <div fxFlex="200px" fxFlex.md="100px" fxFlex.sm="100px">
+                        <div fxLayout fxLayoutAlign="flex-end center" fxLayoutAlign.sm="flex-start center" fxLayoutGap="12px" fxLayoutGap.sm="30px">
+                            <button md-button class="btn-edit" (click)="onClickUpdateButton()">edit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="prefered-time" fxFlex="25%" fxFlex.md="100%" fxFlex.sm="100%">
+                <div fxLayout fxLayoutAlign="space-between center">
+                    <h3 md-subheader>Preferred Time</h3>
+                    <div class="button-group">
+                        <div fxLayout fxLayoutAlign="flex-end center" fxLayoutGap="12px">
+                            <button (click)="onClickPreferredTimeAddButton()" md-button class="btn-edit">Add</button>
+                        </div>
+                    </div>
+                </div>
+                <md-divider style="margin: 15px 0;"></md-divider>
+                <div class="prefered-time-row" *ngFor="let time of customer.preferredTimes">
+                    <div fxLayout fxLayoutAlign="space-between center" *ngIf="time.id != selectedPreferredTimeId">
+                        <p md-line>{{time.startTime + " - " + time.endTime}}</p>
+                        <div class="actions-column">
+                            <div class="v-middle">
+                                <md-icon (click)="onClickPreferredTimeUpdateButton(time)">mode_edit</md-icon>
+                                <md-icon (click)="onClickPreferredTimeDeleteButton(time)">delete</md-icon>
+                            </div>
+                        </div>
+                    </div>
+                    <app-customer-preferred-time-update #editForm [preferredTimes]="preferredTimes" (onSaveButtonClicked)="onClickPreferredTimeUpdateFormSaveButton($event)"
+                    (onCancelButtonClicked)="onClickPreferredTimeUpdateFormCancelButton($event)" [selectedPreferredTime]="time"
+                    *ngIf="time.id==selectedPreferredTimeId"></app-customer-preferred-time-update>
+                </div>
+                <app-customer-preferred-time-add #addForm (onCancelButtonClicked)="onClickPreferredTimeAddFormCancelButton()" (onSaveButtonClicked)="onClickPreferredTimeAddFormSaveButton($event)" [preferredTimes]="preferredTimes" *ngIf="enableAddForm"></app-customer-preferred-time-add>
+            </div>
+        </div>
+    </div>
+</div>

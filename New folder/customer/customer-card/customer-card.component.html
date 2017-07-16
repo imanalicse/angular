@@ -1,0 +1,5 @@
+<div fxLayout fxLayoutAlign="center center">
+  <app-customer-card-add [cardTypes]="cardTypes" *ngIf="activePanel=='add'"></app-customer-card-add>
+  <app-customer-card-view [models]="viewModels" *ngIf="activePanel=='view'"></app-customer-card-view>
+  <app-customer-card-update [model]="updateModel" [cardTypes]="cardTypes" *ngIf="activePanel=='update'"></app-customer-card-update>
+</div>

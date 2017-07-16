@@ -1,0 +1,10 @@
+<div class="actions-item" fxLayout fxLayoutGap="20px" fxLayoutGap.sm="10px" fxLayoutAlign="flex-end center">
+    <div fxFlex="30%" fxFlex.md="50%" fxFlex.sm="50%">
+        <md-input-container>
+            <input mdInput (keyup)="parcelFilter($event)" placeholder="Search by Tracking Number, Sender or Description">
+        </md-input-container>
+    </div>
+    <div>
+        <button (click)="addParcel()" md-button class="btn-add"><md-icon>add</md-icon> Add Parcel</button>
+    </div>
+</div>

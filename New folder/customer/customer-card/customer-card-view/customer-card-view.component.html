@@ -1,0 +1,42 @@
+  <div fxLayout fxLayoutAlign="flex-end center">
+    <div class="button-group" style="padding-top: 50px;">
+      <button (click)="onClickAddButton()" md-button class="btn-add"><md-icon>add</md-icon>Add card</button>
+    </div>
+  </div>
+  <div fxLayout fxLayoutWrap fxLayoutGap="50px" fxLayoutGap.md="15px" fxLayoutAlign="center center">
+    <div *ngFor="let model of models" class="boxed-content" fxFlex="725px" fxFlex.sm="540px" fxFlex.xs="100%">
+      <button md-button class="delete-item"><md-icon (click)="onClickDeleteButton(model)">cancel</md-icon></button>
+      <header fxLayout fxLayoutAlign="space-between center">
+        <h2>card details</h2>
+        <div class="button-group">
+          <button (click)="onClickUpdateButton(model)" md-button class="btn-edit">edit</button>
+        </div>
+      </header>
+      <div class="inner-content card-details">
+        <md-list>
+          <md-list-item>
+            <label for="">Card Number</label>
+            <span>{{model.cardNumber}}</span>
+          </md-list-item>
+          <md-divider class="no-margin"></md-divider>
+
+          <md-list-item>
+            <label for="">Card Name</label>
+            <span>{{model.cardName}}</span>
+          </md-list-item>
+          <md-divider class="no-margin"></md-divider>
+
+          <md-list-item>
+            <label for="">Card Type</label>
+            <span>{{model.cardType.name}}</span>
+          </md-list-item>
+          <md-divider class="no-margin"></md-divider>
+
+          <md-list-item>
+            <label for="">Expiry Date</label>
+            <span>{{model.expiryDate}}</span>
+          </md-list-item>
+        </md-list>
+      </div>
+    </div>
+  </div>

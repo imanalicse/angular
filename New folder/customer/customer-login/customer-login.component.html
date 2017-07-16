@@ -1,0 +1,43 @@
+<section class="section login-page">
+    <div class="login-container">
+        <div class="login-logo v-middle">
+            <a [routerLink]="['/home']"><img src="../assets/logo.png" alt="Reliveri"></a>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="center">
+            <h2>Customer sign in</h2>
+        </div>
+        <md-card *ngIf="hasValidationError">
+            <md-card-title>{{validationError}}</md-card-title>
+        </md-card>
+        <form [formGroup]="form" autocomplete="off">
+            <div class="form-group">
+                <md-input-container>
+                    <input [(ngModel)]="loginModel.email" mdInput placeholder="Email" formControlName="email">
+                    <md-error *ngIf="form.controls.email.invalid">
+                        {{form.controls.email.errors.message}}
+                    </md-error>
+                </md-input-container>
+            </div>
+
+            <div class="form-group">
+                <md-input-container>
+                    <input [(ngModel)]="loginModel.password" mdInput type="password" placeholder="Password" formControlName="password" autocomplete="new-password">
+                    <md-error *ngIf="form.controls.password.invalid">
+                        {{form.controls.password.errors.message}}
+                    </md-error>
+                </md-input-container>
+            </div>
+
+            <!-- <div class="checkbox">
+            <md-checkbox>Remember Me</md-checkbox>
+        </div> -->
+
+        <div class="button-group">
+            <button (click)="onLogin()" md-button class="background-primary-color white-text">Login <i class="material-icons">arrow_forward</i></button>
+        </div>
+        <div class="forgot-password">
+            <a [routerLink]="['/forgotpassword']" class="link">Forgot password?</a>
+        </div>
+    </form>
+</div>
+</section>

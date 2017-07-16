@@ -1,0 +1,5 @@
+<div fxLayout fxLayoutAlign="center center">
+  <customer-billing-address-add [states]="states" *ngIf="!isBillingAddressAvailable"></customer-billing-address-add>
+  <app-customer-billing-address-view [model]="viewModel" *ngIf="enableViewPanel && isBillingAddressAvailable"></app-customer-billing-address-view>
+  <app-customer-billing-address-update [model]="viewModel" [states]="states" [selectedStateId]="viewModel.address.state.id" *ngIf="enableUpdatePanel"></app-customer-billing-address-update>
+</div>

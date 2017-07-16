@@ -1,0 +1,14 @@
+<md-tab-group (selectChange)="details.selectChange($event)" (selectChange)="card.selectChange($event)" (selectChange)="address.selectChange($event)" (selectChange)="nearestagent.selectChange($event)">
+  <md-tab label="My Details">
+    <app-customer-details #details></app-customer-details>
+  </md-tab>
+  <md-tab label="Billing Address">
+    <app-customer-billing-address #address></app-customer-billing-address>
+  </md-tab>
+  <md-tab label="Card Details">
+    <app-customer-card #card></app-customer-card>
+  </md-tab>
+  <md-tab label="My Agent">
+    <app-customer-nearest-agent #nearestagent></app-customer-nearest-agent>
+  </md-tab>
+</md-tab-group>

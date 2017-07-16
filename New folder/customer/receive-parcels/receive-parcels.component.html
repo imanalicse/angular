@@ -1,0 +1,39 @@
+<div class="data-table">
+    <div *ngIf="requesting" class="loader-overlay" fxLayout fxLayoutAlign="center center">
+        <md-spinner strokeWidth=2></md-spinner>
+    </div>
+    <table *ngIf="!hasRequestError" class="table table-striped parcel-list">
+        <thead>
+            <tr>
+                <th>Parcel information</th>
+                <th>Description</th>
+                <th class="status">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr [class.row-hover]="hoverParcel?.id==parcel.id" (mouseenter)="onHoverTr(true, parcel)" (mouseenter)="onHoverTr(false, parcel)" *ngFor="let parcel of parcelList.items | parcelFilter:filterText">
+                <td>
+                    <md-card>
+                        <md-card-title>{{parcel.reliveriTrackingNumber}}</md-card-title>
+                        <md-card-title>{{parcel.trackingNumber}}</md-card-title>
+                        <md-card-subtitle>Sender: <strong>{{parcel.sender}}</strong></md-card-subtitle>
+                    </md-card>
+                </td>
+                <td>{{parcel.description}}</td>
+                <td class="status">
+                    <md-chip-list>
+                        <md-chip [ngClass]="{
+                        'status-to-receive': parcel.deliveryStatusId==1,
+                        'status-received':parcel.deliveryStatusId==2,
+                        'status-transit':parcel.deliveryStatusId==3,
+                        'status-deliver':parcel.deliveryStatusId==4,
+                        'status-reschedule':parcel.deliveryStatusId==5
+                    }">
+                    {{parcel.deliveryStatusName}}
+                </md-chip>
+            </md-chip-list>
+        </td>
+    </tr>
+    <tbody>
+    </table>
+</div>

@@ -1,0 +1,65 @@
+<form [formGroup]="form">
+  <div fxLayout fxLayoutAlign="center center">
+    <div class="boxed-content" fxFlex="725px" fxFlex.sm="540px" fxFlex.xs="100%">
+      <header fxLayout fxLayoutAlign="space-between center">
+        <h2>Update Billing Address</h2>
+        <div class="button-group">
+          <div fxLayout fxLayoutGap="12px" fxLayoutGap.xs="0">
+            <button (click)="onClickSaveButton()" md-button class="btn-edit">Save</button>
+            <button (click)="onClickCancelButton()" md-button class="btn-cancel">cancel</button>
+          </div>
+        </div>
+      </header>
+      <div class="inner-content">
+        <div fxLayout class="location-container">
+          <div fxFlex="42px" style="padding-top: 8px;">
+            <md-icon>location_on</md-icon>
+          </div>
+          <div fxFlex>
+            <div class="two-column" fxLayout fxLayout.xs="column" fxLayoutGap="30px" fxLayoutGap.xs="0">
+              <div fxFlex>
+                <md-input-container>
+                  <input [(ngModel)]="model.address.addressLine1" mdInput type="text" placeholder="Address Line 1*" formControlName="addressline1">
+                  <md-error *ngIf="form.controls.addressline1.invalid">
+                    {{form.controls.addressline1.errors.message}}
+                  </md-error>
+                </md-input-container>
+              </div>
+              <div fxFlex>
+                <md-input-container>
+                  <input [(ngModel)]="model.address.addressLine2" mdInput type="text" placeholder="Address Line 2" formControlName="addressline2">
+                </md-input-container>
+              </div>
+            </div>
+            <div class="two-column" fxLayout fxLayout.xs="column" fxLayoutGap="30px" fxLayoutGap.xs="0">
+              <div fxFlex>
+                <md-input-container>
+                  <input [(ngModel)]="model.address.city" mdInput type="text" placeholder="City" formControlName="city">
+                </md-input-container>
+              </div>
+            </div>
+            <div class="two-column" fxLayout fxLayout.xs="column" fxLayoutGap="30px" fxLayoutGap.xs="0">
+              <div fxFlex>
+                <md-input-container>
+                  <input [(ngModel)]="model.address.postCode" mdInput type="text" placeholder="Post Code*" formControlName="postcode">
+                  <md-error *ngIf="form.controls.postcode.invalid">
+                    {{form.controls.postcode.errors.message}}
+                  </md-error>
+                </md-input-container>
+              </div>
+              <div fxFlex style="padding-top: 11px;">
+                <md-select [(ngModel)]="model.stateId" placeholder="State*" formControlName="stateid">
+                  <md-option *ngFor="let state of states" [value]="state.id">{{state.name}}</md-option>
+                </md-select>
+                <md-error class="error-msg" *ngIf="form.controls.stateid.invalid">
+                  {{form.controls.stateid.errors.message}}
+                </md-error>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

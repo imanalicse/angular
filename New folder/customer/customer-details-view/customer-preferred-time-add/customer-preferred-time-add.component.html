@@ -1,0 +1,24 @@
+<form [formGroup]="form">
+  <div class="prefered-time-form" fxLayout fxLayoutAlign="center" fxLayoutGap="20px">
+    <div fxFlex>
+      <md-select [(ngModel)]="model.startTime" placeholder="Start*" formControlName="starttime">
+        <md-option *ngFor="let item of preferredTimes" value="{{item.startTime}}">{{item.startTime}}</md-option>
+      </md-select>
+      <md-error class="error-msg" *ngIf="form.controls.starttime.invalid">
+        {{form.controls.starttime.errors.message}}
+      </md-error>
+    </div>
+    <div fxFlex>
+      <md-select [(ngModel)]="model.endTime" placeholder="End*" formControlName="endtime">
+        <md-option *ngFor="let item of preferredTimes" value="{{item.endTime}}">{{item.endTime}}</md-option>
+      </md-select>
+      <md-error class="error-msg" *ngIf="form.controls.endtime.invalid">
+        {{form.controls.endtime.errors.message}}
+      </md-error>
+    </div>
+  </div>
+  <div fxLayout fxLayoutAlign="space-between center">
+    <button (click)="onClickPreferredTimeSaveButton()" md-button class="btn-edit">Save</button>
+    <button (click)="onClickPreferredTimeCancelButton()" md-button class="btn-cancel">Cancel</button>
+  </div>
+</form>

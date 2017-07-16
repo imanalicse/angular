@@ -1,0 +1,30 @@
+<div class="customer-photo">
+    <img class="img-circle" *ngIf="imageUrl" src="{{imageUrl}}" alt="">
+    <img class="img-circle" *ngIf="!imageUrl" src="assets/images/default-large.png" alt="">
+    <h3>{{ name }}</h3>
+    <input (change)="uploadProfilePhoto()" #fileInput type="file" id="profile-photo" style="display:none"/>
+    <md-icon (click)="onClickProfilePhotoEditButton()" class="editable-icon">edit</md-icon>
+</div>
+
+<md-list>
+    <md-list-item [class.active]="activeNav=='profile'" (click)="selectNav('profile')">
+        <md-icon>person_outline</md-icon>
+        <span>Profile </span></md-list-item>
+    <md-list-item class="parcel-icon" [class.active]="activeNav=='myparcels'" (click)="selectNav('myparcels')">
+        <md-icon>store</md-icon>
+        <span>My Parcels </span>
+    </md-list-item>
+
+    <md-list-item class="parcel-icon" [class.active]="activeNav=='receiveparcels'" (click)="selectNav('receiveparcels')">
+        <md-icon>store</md-icon>
+        <span>Received Parcels </span>
+    </md-list-item>
+</md-list>
+
+<div class="logout">
+    <md-list>
+        <md-list-item>
+            <md-icon>settings_power</md-icon>
+            <span (click)="logout()">Sign out</span></md-list-item>
+    </md-list>
+</div>

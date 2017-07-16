@@ -1,0 +1,38 @@
+<h2 md-dialog-title>My Parcel</h2>
+<span class="success-msg" *ngIf="successMessage">{{successMessage}}</span>
+<span *ngIf="hasValidationError" class="validation-error-msg">{{validationError}}</span>
+<form [formGroup]="form">
+    <md-list>
+        <md-list-item>
+            <label for="">Tracking Number</label>
+            <md-input-container>
+                <input [(ngModel)]="parcelFormModel.trackingNumber" mdInput formControlName="trackingnumber">
+                <md-error *ngIf="form.controls.trackingnumber.invalid">
+                    {{form.controls.trackingnumber.errors.message}}
+                </md-error>
+            </md-input-container>
+        </md-list-item>
+        <md-list-item>
+            <label for="">Sender</label>
+            <md-input-container>
+                <input [(ngModel)]="parcelFormModel.sender" mdInput type="text" formControlName="sender">
+                <md-error *ngIf="form.controls.sender.invalid">
+                    {{form.controls.sender.errors.message}}
+                </md-error>
+            </md-input-container>
+        </md-list-item>
+        <md-list-item>
+            <label for="">Description</label>
+            <md-input-container>
+                <input [(ngModel)]="parcelFormModel.description" mdInput type="text" formControlName="description">
+                <md-error *ngIf="form.controls.description.invalid">
+                    {{form.controls.description.errors.message}}
+                </md-error>
+            </md-input-container>
+        </md-list-item>
+    </md-list>
+    <md-dialog-actions fxLayout fxLayoutAlign="space-between center">
+        <button class="btn-save" md-button (click)="onParcelSave()">Save</button>
+        <button id="btn-close" class="btn-cancel" md-button md-dialog-close>Cancel</button>
+    </md-dialog-actions>
+</form>

@@ -1,0 +1,14 @@
+<dashboard>
+  <dashboard-header title="{{nav.title}}">
+    <app-customer-myparcels-header *ngIf="nav.name=='myparcels'"></app-customer-myparcels-header>
+    <app-customer-receiveparcels-header *ngIf="nav.name=='receiveparcels'"></app-customer-receiveparcels-header>
+  </dashboard-header>
+  <dashboard-body class="dashboard-body" fxLayout fxLayout.xs="column" fxLayoutAlign="center">
+    <dashboard-sidebar class="dashboard-sidebar" fxFlex="280px" fxFlex.md="140px" fxFlex.sm="140px">
+      <app-customer-nav></app-customer-nav>
+    </dashboard-sidebar>
+    <dashboard-content class="dashboard-content" fxFlex>
+      <router-outlet></router-outlet>
+    </dashboard-content>
+  </dashboard-body>
+</dashboard>

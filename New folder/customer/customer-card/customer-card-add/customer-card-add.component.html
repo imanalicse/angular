@@ -1,0 +1,76 @@
+<form [formGroup]="form">
+  <div fxLayout="column" fxLayoutAlign="center center" class="card-details">
+    <div fxFlex>
+      <div fxLayout fxLayoutGap="42px" fxLayoutGap.sm="0" fxLayoutGap.xs="0"
+      fxLayoutAlign="center">
+      <div class="boxed-content" fxFlex="725px" fxFlex.sm="540px" fxFlex.xs="100%">
+        <header fxLayout fxLayoutAlign="space-between center">
+          <h2>card details</h2>
+          <div class="button-group">
+            <div fxLayout fxLayoutGap="12px">
+              <button (click)="onSaveButtonClick()" md-button class="btn-edit">Save</button>
+              <button (click)="onCancelButtonClick()" md-button class="btn-cancel">Cancel</button>
+            </div>
+          </div>
+        </header>
+        <div class="inner-content card-details">
+
+          <div class="card-details-row" fxLayout fxLayoutAlign="center center">
+            <div fxFlex="120px">
+              <label class="label-title">Card Number</label>
+            </div>
+            <div fxFlex>
+              <md-input-container>
+                <input placeholder="Card Number" [(ngModel)]="model.cardNumber" mdInput type="text" formControlName="cardnumber">
+                <md-error *ngIf="form.controls.cardnumber.invalid">
+                  {{form.controls.cardnumber.errors.message}}
+                </md-error>
+              </md-input-container>
+            </div>
+          </div>
+          <div class="card-details-row" fxLayout fxLayoutAlign="center center">
+            <div fxFlex="120px">
+              <label class="label-title">Card Name</label>
+            </div>
+            <div fxFlex>
+              <md-input-container>
+                <input placeholder="Card Name" [(ngModel)]="model.cardName" mdInput type="text" formControlName="cardname">
+                <md-error *ngIf="form.controls.cardname.invalid">
+                  {{form.controls.cardname.errors.message}}
+                </md-error>
+              </md-input-container>
+            </div>
+          </div>
+          <div class="card-details-row" fxLayout fxLayoutAlign="center center">
+            <div fxFlex="120px">
+              <label class="label-title">Card Type</label>
+            </div>
+            <div fxFlex>
+              <md-select placeholder="Card Type" [(ngModel)]="model.cardTypeId" formControlName="cardtypeid">
+                <md-option *ngFor="let type of cardTypes" value="{{type.id}}">{{type.name}}</md-option>
+              </md-select>
+              <md-error class="error-msg" *ngIf="form.controls.cardtypeid.invalid">
+                {{form.controls.cardtypeid.errors.message}}
+              </md-error>
+            </div>
+          </div>
+          <div class="card-details-row" fxLayout fxLayoutAlign="center center">
+            <div fxFlex="120px">
+              <label class="label-title">Expiry Date</label>
+            </div>
+            <div fxFlex>
+              <md-input-container>
+                <input placeholder="MM/YYYY" [(ngModel)]="model.expiryDate" mdInput type="text" formControlName="expirydate">
+                <md-error *ngIf="form.controls.expirydate.invalid">
+                  {{form.controls.expirydate.errors.message}}
+                </md-error>
+              </md-input-container>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+<!--</div>-->

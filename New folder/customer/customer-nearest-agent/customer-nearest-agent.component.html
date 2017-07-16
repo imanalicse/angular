@@ -1,0 +1,30 @@
+<div class="my-agent" *ngIf="tabChanged">
+    <agm-map [latitude]="lat" [longitude]="lng" [zoom]="12">
+        <agm-marker *ngFor="let agent of nearestAgents" [latitude]="agent.lat" [longitude]="agent.lng">
+            <agm-info-window>
+                <div class="info-window">
+                    <h4>{{agent.name}}</h4>
+                    <p>{{agent.address}}</p>
+                </div>
+            </agm-info-window>
+        </agm-marker>
+        <core-map (onMapLoad)="mapLoaded($event)"></core-map>
+    </agm-map>
+    <div [fxShow]="showRightSidebar" class="select-agent">
+        <h3>Select an Agent</h3>
+        <div *ngFor="let agent of nearestAgents; let i = index" (click)="clickOnNearestAgent(i, agent)" [class.selected]="selectedNearestAgent==agent" [class.preferred-agent]="preferredAgent.id==agent.id" class="block" fxLayout fxLayoutAlign="center">
+            <div class="details-item" fxFlex>
+                <md-card-header>
+                    <md-card-title>{{agent.name}}</md-card-title>
+                </md-card-header>
+                <md-card-content>
+                    <span>{{agent.address}}</span>
+                </md-card-content>
+                <button *ngIf="selectedNearestAgent==agent && preferredAgent.id != agent.id" (click)="selectNearestAgent(agent)" md-button class="btn-select">Select</button>
+            </div>
+            <div fxFlex="79px" fxFlex.md="40px">
+                <img class="img-responsive" src="{{agent.photoPath}}" alt="">
+            </div>
+        </div>
+    </div>
+</div>
