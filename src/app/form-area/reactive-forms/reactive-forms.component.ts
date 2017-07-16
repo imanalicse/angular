@@ -12,14 +12,17 @@ export class ReactiveFormsComponent implements OnInit {
 
     heroForm:FormGroup;
     states = states;
+    hero: Hero;
 
     constructor(private fb:FormBuilder) {
         this.createForm();
+        //this.hero = new Hero();
     }
 
     ngOnInit() {
-
+        
         console.log(this.heroForm.value)
+        
     }
 
     createForm() {
@@ -32,9 +35,15 @@ export class ReactiveFormsComponent implements OnInit {
             power: '',
             sidekick: ''
         });
+
+        this.heroForm.setValue({
+            name:    this.hero.name,
+            address: this.hero.addresses[0] || new Address()
+        });
     }
 
     onSubmit() {
+        
         console.log('Controls ', this.heroForm.controls);
 
         console.log('Form Value ', this.heroForm.value)
