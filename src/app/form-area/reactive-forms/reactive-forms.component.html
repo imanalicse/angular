@@ -5,7 +5,7 @@
 
     <!--<div *ngFor="let state2 of states">{{state2}}</div>-->
 
-    <form [formGroup]="heroForm" novalidate>
+    <form [formGroup]="heroForm" (ngSubmit)="onSubmit()" novalidate>
         <div class="form-group">
             <label class="center-block">Name:
                 <input class="form-control" formControlName="name">
@@ -45,8 +45,11 @@
                 <input type="checkbox" formControlName="sidekick">I have a sidekick.
             </label>
         </div>
+
+        <button type="submit" class="btn btn-success">Save</button>
     </form>
 
 
+    <p>Name value: {{ heroForm.get('name').value}}</p>
     <!--<p>Form value: {{ heroForm.value | json }}</p>-->
 </div>
