@@ -23,6 +23,8 @@ export class ReactiveFormsComponent implements OnInit {
             })
         });
 
+        console.log(this.userForm.value)
+
     }
 
     ngOnInit() {
