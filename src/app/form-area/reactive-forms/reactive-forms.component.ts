@@ -18,7 +18,8 @@ export class ReactiveFormsComponent implements OnInit {
             address: this.formBuilder.group({
                 street: [],
                 city: [],
-                postalCode: [null, Validators.pattern('^[0-9][0-9]{4}$')]
+                postalCode: []
+                //postalCode: [null, Validators.pattern('^[0-9][0-9]{4}$')]
             })
         });
 
@@ -31,7 +32,7 @@ export class ReactiveFormsComponent implements OnInit {
     }
 
     onSubmit(){
-        console.log(this.userForm.value);
+        console.log(this.userForm.controls);
     }
 
 }
