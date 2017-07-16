@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UserFormModel } from 'app/shared/user-form-model';
 
 @Component({
     selector: 'app-reactive-forms',
@@ -9,8 +10,11 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class ReactiveFormsComponent implements OnInit {
 
     userForm: FormGroup;
+    model: UserFormModel;
 
     constructor(private formBuilder: FormBuilder) {
+
+        this.model = new UserFormModel();
 
         this.userForm = this.formBuilder.group({
             name: ['', Validators.required],
@@ -23,8 +27,8 @@ export class ReactiveFormsComponent implements OnInit {
             })
         });
 
-        console.log(this.userForm.value)
-
+        console.log(this.userForm.value);
+        console.log(this.model.name);
     }
 
     ngOnInit() {
@@ -35,6 +39,7 @@ export class ReactiveFormsComponent implements OnInit {
 
     onSubmit(){
         console.log(this.userForm.controls);
+        console.log(this.model);
     }
 
 }
