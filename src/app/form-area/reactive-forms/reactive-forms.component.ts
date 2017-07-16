@@ -10,12 +10,10 @@ export class ReactiveFormsComponent implements OnInit {
 
     userForm: FormGroup;
 
-    constructor(private formBuilder: FormBuilder) { }
-
-    ngOnInit() {
+    constructor(private formBuilder: FormBuilder) {
 
         this.userForm = this.formBuilder.group({
-            name: ['Iman', [Validators.required, Validators.minLength(4), Validators.maxLength(10)]],
+            name: ['', Validators.required],
             email: [],
             address: this.formBuilder.group({
                 street: [],
@@ -23,6 +21,12 @@ export class ReactiveFormsComponent implements OnInit {
                 postalCode: [null, Validators.pattern('^[0-9][0-9]{4}$')]
             })
         });
+
+    }
+
+    ngOnInit() {
+
+
         //console.log(this.userForm.controls['name'].hasError('required'))
     }
 
