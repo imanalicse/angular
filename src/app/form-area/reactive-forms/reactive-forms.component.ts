@@ -27,7 +27,7 @@ export class ReactiveFormsComponent implements OnInit {
 
     ngOnInit() {
 
-
+//required
         //console.log(this.userForm.controls['name'].hasError('required'))
     }
 
