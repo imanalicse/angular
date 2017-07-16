@@ -1,60 +1,47 @@
 <div class="container">
     <h2>Reactive Forms</h2>
 
-    {{testData}}
+     <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+       <div class="form-group">
+         <label>Name</label>
+         <input type="text" class="form-control" formControlName="name">
 
-    <!--<div *ngFor="let state2 of states">{{state2}}</div>-->
+         <!--<div *ngIf="userForm.controls['name'].hasError('required')" class="alert alert-danger">
+             Please enter name
+         </div>
+         <div *ngIf="userForm.controls['name'].hasError('minlength')" class="alert alert-danger">
+             Please enter at least 4 characters
+         </div>
 
-    <form [formGroup]="heroForm" (ngSubmit)="onSubmit()" novalidate>
-        <div class="form-group">
-            <label class="center-block">Name:
-                <input class="form-control" formControlName="name">
-            </label>
-        </div>
-        <div formGroupName="address" class="well well-lg">
-            <h4>Secret Lair</h4>
-            <div class="form-group">
-                <label class="center-block">Street:
-                    <input class="form-control" formControlName="street">
-                </label>
-            </div>
-            <div class="form-group">
-                <label class="center-block">City:
-                    <input class="form-control" formControlName="city">
-                </label>
-            </div>
-            <div class="form-group">
-                <label class="center-block">State:
-                    <select class="form-control" formControlName="state">
-                        <option [value]="Dhaka">Dhaka</option>
-                        <option [value]="Rajshahi">Rajshahi</option>
-                        <!--<option *ngFor="let state of states" [value]="state">{{state}}</option>-->
-                    </select>
-                </label>
-            </div>
-            <div class="form-group">
-                <label class="center-block">Zip Code:
-                    <input class="form-control" formControlName="zip">
-                </label>
-            </div>
-        </div>
-        <div class="form-group radio">
-            <h4>Super power:</h4>
-            <label class="center-block"><input type="radio" formControlName="power" value="flight">Flight</label>
-            <label class="center-block"><input type="radio" formControlName="power" value="x-ray vision">X-ray
-                vision</label>
-            <label class="center-block"><input type="radio" formControlName="power" value="strength">Strength</label>
-        </div>
-        <div class="checkbox">
-            <label class="center-block">
-                <input type="checkbox" formControlName="sidekick">I have a sidekick.
-            </label>
-        </div>
-
-        <button type="submit" class="btn btn-success">Save</button>
-    </form>
+         <div *ngIf="userForm.controls['name'].hasError('maxlength')" class="alert alert-danger">
+             Name should not exceed 10 characters
+         </div>-->
 
 
-    <p>Name value: {{ heroForm.get('name').value}}</p>
-    <!--<p>Form value: {{ states | json }}</p>-->
+       </div>
+       <div class="form-group">
+         <label>Email</label>
+         <input type="text" class="form-control" formControlName="email">
+       </div>
+
+       <div formGroupName="address">
+         <div class="form-group">
+           <label>City</label>
+           <input type="text" class="form-control" formControlName="city">
+         </div>
+         <div class="form-group">
+           <label>Street</label>
+           <input type="text" class="form-control" formControlName="street">
+         </div>
+         <div class="form-group">
+           <label>PostalCode</label>
+           <input type="text" class="form-control" formControlName="postalCode">
+           <!--<div *ngIf="userForm.controls['address'].controls['postalCode'].hasError('pattern')" class="alert alert-danger">
+             Postal Code format is five digits
+           </div>-->
+         </div>
+       </div>
+       <button type="submit" class="btn btn-primary">Submit</button>
+
+     </form>
 </div>
