@@ -1,45 +1,43 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
-//import { states } from 'app/shared/data-model';
+import { Address, Hero, states } from 'app/shared/data-model';
 
 @Component({
-  selector: 'app-reactive-forms',
-  templateUrl: './reactive-forms.component.html',
-  styleUrls: ['./reactive-forms.component.css']
+    selector: 'app-reactive-forms',
+    templateUrl: './reactive-forms.component.html',
+    styleUrls: ['./reactive-forms.component.css']
 })
-export class ReactiveFormsComponent implements OnInit{
+export class ReactiveFormsComponent implements OnInit {
 
-  heroForm: FormGroup;
-  //states = states;
+    heroForm:FormGroup;
+    states = states;
 
-  constructor(private fb: FormBuilder) {
-    this.createForm();
-  }
+    constructor(private fb:FormBuilder) {
+        this.createForm();
+    }
 
-  ngOnInit(){
+    ngOnInit() {
 
-    console.log(this.heroForm.value)
-  }
+        console.log(this.heroForm.value)
+    }
 
-  createForm() {
+    createForm() {
 
-    //console.log(this.states);
+        //console.log(this.states);
 
-    this.heroForm = this.fb.group({
-      name: ['', Validators.required ],
-      street: '',
-      city: '',
-      state: '',
-      zip: '',
-      power: '',
-      sidekick: ''
-    });
-  }
+        this.heroForm = this.fb.group({
+            name: ['', Validators.required],
+            address: this.fb.group(new Address()),
+            power: '',
+            sidekick: ''
+        });
+    }
 
-  onSubmit() {
-    
-    console.log('Form Value ', this.heroForm.value)
-    console.log('Status ', this.heroForm.status)
-  }
+    onSubmit() {
+        console.log('Controls ', this.heroForm.controls);
+
+        console.log('Form Value ', this.heroForm.value)
+        console.log('Status ', this.heroForm.status)
+    }
 }
