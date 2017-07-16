@@ -15,20 +15,21 @@ export class ReactiveFormsComponent implements OnInit {
     constructor(private formBuilder: FormBuilder) {
 
         this.model = new UserFormModel();
+        console.log('this.model ', this.model);
+        //this.model.address.city
 
         this.userForm = this.formBuilder.group({
             name: ['', Validators.required],
             email: [],
             address: this.formBuilder.group({
-                street: [],
                 city: [],
-                postalCode: []
-                //postalCode: [null, Validators.pattern('^[0-9][0-9]{4}$')]
+                street: [],
+                postalCode: [null, Validators.pattern('^[0-9][0-9]{4}$')]
             })
         });
 
-        console.log(this.userForm.value);
-        console.log(this.model.name);
+        //console.log(this.userForm.value);
+
     }
 
     ngOnInit() {
