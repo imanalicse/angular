@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { UserFormModel } from 'app/shared/user-form-model';
+import { UserFormModel, UserFormDataModel } from 'app/shared/user-form-model';
 
 @Component({
     selector: 'app-reactive-forms',
@@ -10,11 +10,12 @@ import { UserFormModel } from 'app/shared/user-form-model';
 export class ReactiveFormsComponent implements OnInit {
 
     userForm: FormGroup;
-    model: UserFormModel;
+    //model: UserFormModel;
+    model: UserFormDataModel;
 
     constructor(private formBuilder: FormBuilder) {
 
-        this.model = new UserFormModel();
+        this.model = new UserFormDataModel();
         console.log('this.model ', this.model);
         //this.model.address.city
 
