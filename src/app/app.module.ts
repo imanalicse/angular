@@ -1,6 +1,6 @@
 import {BrowserModule} from "@angular/platform-browser";
 import {NgModule} from "@angular/core";
-import {HttpModule} from "@angular/http";
+import {HttpModule, HttpClientModule} from "@angular/http";
 import {RouterModule} from "@angular/router";
 import { FormsModule } from '@angular/forms';
 
@@ -21,6 +21,7 @@ import { TablePaginationExampleComponent } from './material/table-pagination-exa
         BrowserAnimationsModule,
         MdInputModule,
         MdPaginatorModule,
+        HttpClientModule,
         RouterModule.forRoot([
             {path: '', component: AppComponent},
             {path: 'pagination', component: MyPaginatorComponent},
