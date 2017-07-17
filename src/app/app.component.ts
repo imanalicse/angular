@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit{
   title = 'app works!';
-  constructor(){}
+  constructor(private http: HttpClient){}
 
   ngOnInit(){
     console.log(this.title);
+
+    this.http.get('/api/items').subscribe(data => {
+      // Read the result field from the JSON response.
+      this.results = data['results'];
+    });
+
   }
 }
