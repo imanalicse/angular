@@ -13,6 +13,9 @@ export class MyPaginatorComponent implements OnInit {
   pageSize = 10;
   pageSizeOptions = [5, 10, 25, 100];
 
+  // custom
+  offset = 0;
+
   // MdPaginator Output
   pageEvent: PageEvent;
 
@@ -27,8 +30,11 @@ export class MyPaginatorComponent implements OnInit {
     this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
   }
 
-  onPageEvent($event){
-    console.log($event)
+  onPageEvent(options){
+
+    console.log(options);
+    
+    //console.log('offset ', this.offset);
   }
 
 
