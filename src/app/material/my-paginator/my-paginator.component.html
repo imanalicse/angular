@@ -17,7 +17,7 @@
 <md-paginator [length]="length"
               [pageSize]="pageSize"
               [pageSizeOptions]="pageSizeOptions"
-              (page)="pageEvent = $event">
+              (page)="onPageEvent(pageEvent = $event)">
 </md-paginator>
 
 <div *ngIf="pageEvent">

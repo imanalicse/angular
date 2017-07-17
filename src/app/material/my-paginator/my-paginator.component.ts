@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import {PageEvent} from '@angular/material';
 
 @Component({
@@ -26,5 +26,10 @@ export class MyPaginatorComponent implements OnInit {
   setPageSizeOptions(setPageSizeOptionsInput: string) {
     this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
   }
+
+  onPageEvent($event){
+    console.log($event)
+  }
+
 
 }

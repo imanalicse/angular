@@ -23,7 +23,8 @@ import { TablePaginationExampleComponent } from './material/table-pagination-exa
         MdPaginatorModule,
         RouterModule.forRoot([
             {path: '', component: AppComponent},
-            {path: 'pagination', component: MyPaginatorComponent}
+            {path: 'pagination', component: MyPaginatorComponent},
+            {path: 'table-pagination', component: TablePaginationExampleComponent}
         ]),
     ],
     declarations: [
