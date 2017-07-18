@@ -15,6 +15,7 @@ import { MyPaginatorComponent } from './material/my-paginator/my-paginator.compo
 import { TablePaginationExampleComponent } from './material/table-pagination-example/table-pagination-example.component';
 import { ParentComponent } from './communication/parent/parent.component';
 import { ChildComponent } from './communication/child/child.component';
+import {CommonService} from "./services/common.service";
 
 @NgModule({
     imports: [
@@ -42,7 +43,7 @@ import { ChildComponent } from './communication/child/child.component';
         ParentComponent,
         ChildComponent
     ],
-    providers: [],
+    providers: [CommonService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
