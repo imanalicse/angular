@@ -6,7 +6,7 @@ import {Observable} from 'rxjs/Observable';
 export class CommonService {
 
     //private dataUrl = 'app/api/data.json';
-    private dataUrl = 'https://jsonplaceholder.typicode.com/posts';
+    private dataUrl = 'http://localhost:3000/posts';
 
     constructor(private http: Http) { }
 

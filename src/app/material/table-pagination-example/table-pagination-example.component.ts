@@ -32,19 +32,14 @@ export class TablePaginationExampleComponent implements OnInit {
 
     //console.log('exampleDatabase ', this.exampleDatabase.data.length);
     
-    /*this.commonService.getDataList()
+    this.commonService.getDataList()
         .subscribe(resp => {
               console.log(' get data ', resp)
             },
             err => {
               //console.log('err ', err)
             }
-        );*/
-
-    /*this.http.get("app/api/data.json")
-        .subscribe((data)=> {
-          console.log(data)
-        });*/
+        );
   }
 
 }
