@@ -1,0 +1,14 @@
+
+<table style="width: 100%">
+    <tr>
+        <td>
+            <p>
+                parent works!
+            </p>
+            <h4>{{showMessage}}</h4>
+        </td>
+        <td>
+            <app-child (notify)="onNotifyClick($event)"></app-child>
+        </td>
+    </tr>
+</table>
