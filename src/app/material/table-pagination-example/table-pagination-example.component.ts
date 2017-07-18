@@ -6,6 +6,9 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/observable/merge';
 import 'rxjs/add/operator/map';
+
+import {Http} from "@angular/http";
+
 import {CommonService} from "../../services/common.service";
 
 @Component({
@@ -21,21 +24,27 @@ export class TablePaginationExampleComponent implements OnInit {
 
   @ViewChild(MdPaginator) paginator: MdPaginator;
 
-  constructor(private commonService: CommonService) { }
+  constructor(private commonService: CommonService, private http: Http) { }
 
-  ngOnInit() {
-    //this.dataSource = new ExampleDataSource(this.exampleDatabase, this.paginator);
+  ngOnInit():void {
+    this.dataSource = new ExampleDataSource(this.exampleDatabase, this.paginator);
     //console.log(this.dataSource);
 
-    this.commonService.getDataList()
+    //console.log('exampleDatabase ', this.exampleDatabase.data.length);
+    
+    /*this.commonService.getDataList()
         .subscribe(resp => {
               console.log(' get data ', resp)
             },
             err => {
-              console.log('err ', err)
+              //console.log('err ', err)
             }
-        );
+        );*/
 
+    /*this.http.get("app/api/data.json")
+        .subscribe((data)=> {
+          console.log(data)
+        });*/
   }
 
 }
