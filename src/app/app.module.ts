@@ -6,7 +6,8 @@ import { FormsModule } from '@angular/forms';
 //import {HttpClientModule} from '@angular/common/http';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MdPaginatorModule, MdInputModule} from '@angular/material';
+import {MdPaginatorModule, MdInputModule, MdTableModule} from '@angular/material';
+import { CdkTableModule } from '@angular/cdk';
 
 import {AppComponent} from "./app.component";
 import {FormAreaModule} from "./form-area/form-area.module";
@@ -24,6 +25,8 @@ import { ChildComponent } from './communication/child/child.component';
         BrowserAnimationsModule,
         MdInputModule,
         MdPaginatorModule,
+        MdTableModule,
+        CdkTableModule,
         //HttpClientModule,
         RouterModule.forRoot([
             {path: '', component: AppComponent},
