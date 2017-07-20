@@ -1,0 +1,15 @@
+<md-tab-group (selectChange)="CustomTabChange($event)">
+    <md-tab label="Tab 1">
+        Content 1
+        <button (click)="nextPreviousTab(1)">Next</button>
+    </md-tab>
+    <md-tab label="Tab 2">
+        Content 2
+        <button (click)="nextPreviousTab(0)">Back</button>
+        <button (click)="nextPreviousTab(2)">Next</button>
+    </md-tab>
+    <md-tab label="Tab 3">
+        Content 3
+        <button (click)="nextPreviousTab(1)">Back</button>
+    </md-tab>
+</md-tab-group>
