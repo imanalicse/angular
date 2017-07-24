@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
 
+import {MaterialModule, MdDatepickerModule, MdNativeDateModule} from '@angular/material';
+
 import {FormAreaRoutingModule} from "./form-area-routing.module";
 import {FormAreaComponent} from "./form-area.component";
 import {TemplateDrivenFormsComponent} from "./template-driven-forms/template-driven-forms.component";
@@ -17,7 +19,10 @@ import {ReactiveFormsComponent} from "./reactive-forms/reactive-forms.component"
         RouterModule,
         CommonModule,
         ReactiveFormsModule,
-        FormAreaRoutingModule
+        FormAreaRoutingModule,
+        MaterialModule,
+        MdNativeDateModule,
+        MdDatepickerModule
     ],
     declarations: [
         FormAreaComponent,
