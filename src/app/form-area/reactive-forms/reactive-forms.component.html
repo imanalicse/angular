@@ -2,7 +2,7 @@
     <h2>Reactive Forms</h2>
 
     <md-input-container>
-        <input mdInput [mdDatepicker]="picker" placeholder="Choose a date">
+        <input mdInput [mdDatepicker]="picker" [max]="maxDate" placeholder="Choose a date">
         <button mdSuffix [mdDatepickerToggle]="picker"></button>
     </md-input-container>
     <md-datepicker #picker></md-datepicker>

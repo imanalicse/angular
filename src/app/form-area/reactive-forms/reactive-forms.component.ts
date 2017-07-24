@@ -12,6 +12,7 @@ export class ReactiveFormsComponent implements OnInit {
     userForm: FormGroup;
     //model: UserFormModel;
     model: UserFormDataModel;
+    maxDate: any;
 
     constructor(private formBuilder: FormBuilder) {
 
@@ -34,6 +35,9 @@ export class ReactiveFormsComponent implements OnInit {
     }
 
     ngOnInit() {
+
+        this.maxDate = new Date();
+        this.maxDate.setDate(this.maxDate.getDate() - 1);
 
 //required
         //console.log(this.userForm.controls['name'].hasError('required'))
