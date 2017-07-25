@@ -5,7 +5,7 @@
         <input mdInput [mdDatepicker]="picker" [max]="maxDate" placeholder="Choose a date">
         <button mdSuffix [mdDatepickerToggle]="picker"></button>
     </md-input-container>
-    <md-datepicker #picker></md-datepicker>
+    <md-datepicker #picker startView="year"></md-datepicker>
 
 
     <form [formGroup]="userForm" (ngSubmit)="onSubmit()">

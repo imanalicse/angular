@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { DateAdapter } from '@angular/material';
+import * as moment from 'moment/moment';
 import { UserFormModel, UserFormDataModel } from 'app/shared/user-form-model';
 
 @Component({
@@ -14,7 +16,13 @@ export class ReactiveFormsComponent implements OnInit {
     model: UserFormDataModel;
     maxDate: any;
 
-    constructor(private formBuilder: FormBuilder) {
+    today: string = moment().format('D MMM YYYY');
+
+
+
+    constructor(private formBuilder: FormBuilder, private dateAdapter: DateAdapter<Date>) {
+
+        this.dateAdapter.setLocale('fr');
 
         this.model = new UserFormDataModel();
         console.log('this.model ', this.model);
@@ -31,6 +39,7 @@ export class ReactiveFormsComponent implements OnInit {
         });
 
         //console.log(this.userForm.value);
+        console.log('this.today ', this.today)
 
     }
 
