@@ -6,7 +6,7 @@ import {Observable} from 'rxjs/Observable';
 export class CommonService {
 
     //private dataUrl = 'app/api/data.json';
-    private dataUrl = 'http://localhost:3000/posts';
+    private dataUrl = 'http://localhost:3000/employees';
 
     constructor(private http: Http) { }
 

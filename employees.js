@@ -10,6 +10,7 @@ function generateEmployees () {
       "id": id,
       "first_name": firstName,
       "last_name": lastName,
+      "name": firstName +" "+lastName,
       "email": email
     })
   }
