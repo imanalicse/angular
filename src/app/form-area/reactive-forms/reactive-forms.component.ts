@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { DateAdapter } from '@angular/material';
+import { DateAdapter, NativeDateAdapter } from '@angular/material';
 import * as moment from 'moment/moment';
 import { UserFormModel, UserFormDataModel } from 'app/shared/user-form-model';
 
@@ -45,8 +45,8 @@ export class ReactiveFormsComponent implements OnInit {
 
     ngOnInit() {
 
-        this.maxDate = new Date();
-        this.maxDate.setDate(this.maxDate.getDate() - 1);
+        //this.maxDate = new Date();
+        //this.maxDate.setDate(this.maxDate.getDate() - 1);
 
 //required
         //console.log(this.userForm.controls['name'].hasError('required'))
@@ -58,3 +58,43 @@ export class ReactiveFormsComponent implements OnInit {
     }
 
 }
+
+export class AppDateAdapter extends NativeDateAdapter {
+
+    format(date: Date, displayFormat: Object): string {
+
+        if (displayFormat === 'input') {
+            const day = date.getDate();
+            const month = date.getMonth() + 1;
+            const year = date.getFullYear();
+            return `${day}-${month}-${year}`;
+        } else {
+            return date.toDateString();
+        }
+    }
+
+    getDayOfWeek(date: Date) : number{
+        return 1;
+    }
+
+
+    getDayOfWeekNames(style): string[] {
+
+        const SHORT_NAMES = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+        return SHORT_NAMES;
+    }
+}
+
+export const APP_DATE_FORMATS =
+{
+    parse: {
+        dateInput: { month: 'short', year: 'numeric', day: 'numeric' },
+    },
+    display: {
+        dateInput: 'input',
+        monthYearLabel: { year: 'numeric', month: 'numeric' },
+        dateA11yLabel: { year: 'numeric', month: 'long', day: 'numeric' },
+        monthYearA11yLabel: { year: 'numeric', month: 'long' },
+    }
+};

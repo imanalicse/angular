@@ -4,12 +4,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
 
-import {MaterialModule, MdDatepickerModule, MdNativeDateModule} from '@angular/material';
+import {MaterialModule, MdDatepickerModule, MdNativeDateModule, DateAdapter, MD_DATE_FORMATS} from '@angular/material';
 
 import {FormAreaRoutingModule} from "./form-area-routing.module";
 import {FormAreaComponent} from "./form-area.component";
 import {TemplateDrivenFormsComponent} from "./template-driven-forms/template-driven-forms.component";
-import {ReactiveFormsComponent} from "./reactive-forms/reactive-forms.component";
+import {ReactiveFormsComponent, APP_DATE_FORMATS, AppDateAdapter} from "./reactive-forms/reactive-forms.component";
 
 
 @NgModule({
@@ -29,7 +29,14 @@ import {ReactiveFormsComponent} from "./reactive-forms/reactive-forms.component"
         TemplateDrivenFormsComponent,
         ReactiveFormsComponent
     ],
-    providers: [],
+    providers: [
+        {
+            provide: DateAdapter, useClass: AppDateAdapter
+        },
+        {
+            provide: MD_DATE_FORMATS, useValue: APP_DATE_FORMATS
+        }
+    ],
     bootstrap: []
 })
 export class FormAreaModule {
