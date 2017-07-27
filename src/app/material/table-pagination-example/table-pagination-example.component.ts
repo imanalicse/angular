@@ -20,18 +20,18 @@ export class TablePaginationExampleComponent implements OnInit {
 
     displayedColumns = ['userId', 'userName', 'Email'];
     exampleDatabase = null; //new ExampleDatabase();
-    dataSource:ExampleDataSource;
+    dataSource:MyDataSource;
 
     @ViewChild(MdPaginator)
     paginator:MdPaginator;
 
     constructor(private commonService:CommonService, private http:Http) {
-        this.exampleDatabase = new ExampleDatabase(commonService);
+        this.exampleDatabase = new MyDatabase(commonService);
     }
 
     ngOnInit():void {
 
-        this.dataSource = new ExampleDataSource(this.exampleDatabase, this.paginator);
+        this.dataSource = new MyDataSource(this.exampleDatabase, this.paginator);
         //console.log(this.dataSource);
         console.log('exampleDatabase ', this.exampleDatabase);
 
@@ -46,7 +46,7 @@ export interface UserData {
 }
 
 
-export class ExampleDatabase {
+export class MyDatabase {
     /** Stream that emits whenever the data has been modified. */
     dataChange:BehaviorSubject<UserData[]> = new BehaviorSubject<UserData[]>([]);
 
@@ -57,7 +57,6 @@ export class ExampleDatabase {
     constructor(private commonService:CommonService) {
 
         this.commonService.getDataList().subscribe(resp => {
-            console.log('dddddd ', Object.keys(resp).length);
 
             const copiedData = this.data.slice();
             for (var i = 0; i < Object.keys(resp).length; i++) {
@@ -72,24 +71,24 @@ export class ExampleDatabase {
 /**
  * Data source to provide what data should be rendered in the table. Note that the data source
  * can retrieve its data in any way. In this case, the data source is provided a reference
- * to a common data base, ExampleDatabase. It is not the data source's responsibility to manage
+ * to a common data base, MyDatabase. It is not the data source's responsibility to manage
  * the underlying data. Instead, it only needs to take the data and send the table exactly what
  * should be rendered.
  */
-export class ExampleDataSource extends DataSource<any> {
-    constructor(private _exampleDatabase:ExampleDatabase, private _paginator:MdPaginator) {
+export class MyDataSource extends DataSource<any> {
+    constructor(private _myDatabase:MyDatabase, private _paginator:MdPaginator) {
         super();
     }
 
     /** Connect function called by the table to retrieve one stream containing the data to render. */
     connect():Observable<UserData[]> {
         const displayDataChanges = [
-            this._exampleDatabase.dataChange,
+            this._myDatabase.dataChange,
             this._paginator.page,
         ];
 
         return Observable.merge(...displayDataChanges).map(() => {
-            const data = this._exampleDatabase.data.slice();
+            const data = this._myDatabase.data.slice();
 
             // Grab the page's slice of data.
             const startIndex = this._paginator.pageIndex * this._paginator.pageSize;
