@@ -24,22 +24,36 @@ export class TablePaginationExampleComponent implements OnInit {
 
   @ViewChild(MdPaginator) paginator: MdPaginator;
 
+  dataChange: BehaviorSubject<UserData[]> = new BehaviorSubject<UserData[]>([]);
+  get data(): UserData[] {
+    return this.dataChange.value;
+  }
+
   constructor(private commonService: CommonService, private http: Http) { }
 
   ngOnInit():void {
     this.dataSource = new ExampleDataSource(this.exampleDatabase, this.paginator);
     //console.log(this.dataSource);
 
-    //console.log('exampleDatabase ', this.exampleDatabase.data.length);
-    
     this.commonService.getDataList()
         .subscribe(resp => {
-              console.log(' get data ', resp)
+              //console.log(' get data ', resp);
+
+              const copiedData = this.data.slice();
+                for(var i=0; i<100;i++){
+                  //console.log(resp[i]);
+                  copiedData.push(resp[i]);
+                  this.dataChange.next(copiedData);
+                }
             },
             err => {
               //console.log('err ', err)
             }
         );
+
+    console.log('exampleDatabase ', this.exampleDatabase);
+    console.log('dataChange ', this.dataChange);
+    console.log('data ', this.data);
   }
 
 }
