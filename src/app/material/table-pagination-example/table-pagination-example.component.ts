@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Injectable} from '@angular/core';
+import {Component, OnInit, ViewChild, Injectable} from '@angular/core';
 import {DataSource} from '@angular/cdk';
 import {MdPaginator} from '@angular/material';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
@@ -12,57 +12,61 @@ import {Http} from "@angular/http";
 import {CommonService} from "../../services/common.service";
 
 @Component({
-  selector: 'app-table-pagination-example',
-  templateUrl: './table-pagination-example.component.html',
-  styleUrls: ['./table-pagination-example.component.css']
+    selector: 'app-table-pagination-example',
+    templateUrl: './table-pagination-example.component.html',
+    styleUrls: ['./table-pagination-example.component.css']
 })
 export class TablePaginationExampleComponent implements OnInit {
 
-  displayedColumns = ['userId', 'userName', 'Email'];
-  exampleDatabase = null; //new ExampleDatabase();
-  dataSource: ExampleDataSource;
+    displayedColumns = ['userId', 'userName', 'Email'];
+    exampleDatabase = null; //new ExampleDatabase();
+    dataSource:ExampleDataSource;
 
-  @ViewChild(MdPaginator) paginator: MdPaginator;
+    @ViewChild(MdPaginator)
+    paginator:MdPaginator;
 
-  constructor(private commonService: CommonService, private http: Http) {
-    this.exampleDatabase = new ExampleDatabase(commonService);
-  }
+    constructor(private commonService:CommonService, private http:Http) {
+        this.exampleDatabase = new ExampleDatabase(commonService);
+    }
 
-  ngOnInit():void {
+    ngOnInit():void {
 
-    this.dataSource = new ExampleDataSource(this.exampleDatabase, this.paginator);
-    //console.log(this.dataSource);
-    console.log('exampleDatabase ', this.exampleDatabase);
+        this.dataSource = new ExampleDataSource(this.exampleDatabase, this.paginator);
+        //console.log(this.dataSource);
+        console.log('exampleDatabase ', this.exampleDatabase);
 
-  }
+    }
 
 }
 
 export interface UserData {
-  id: any;
-  name: string;
-  email: string;
+    id:any;
+    name:string;
+    email:string;
 }
 
 
 export class ExampleDatabase {
-  /** Stream that emits whenever the data has been modified. */
-  dataChange: BehaviorSubject<UserData[]> = new BehaviorSubject<UserData[]>([]);
-  get data(): UserData[] { return this.dataChange.value; }
+    /** Stream that emits whenever the data has been modified. */
+    dataChange:BehaviorSubject<UserData[]> = new BehaviorSubject<UserData[]>([]);
 
-  constructor(private commonService: CommonService) {
+    get data():UserData[] {
+        return this.dataChange.value;
+    }
 
-    this.commonService.getDataList().subscribe(resp =>{
-      console.log('dddddd ', resp);
+    constructor(private commonService:CommonService) {
 
-      const copiedData = this.data.slice();
-      for(var i=0; i<100;i++){
-        copiedData.push(resp[i]);
-        this.dataChange.next(copiedData);
-      }
+        this.commonService.getDataList().subscribe(resp => {
+            console.log('dddddd ', Object.keys(resp).length);
 
-    });
-  }
+            const copiedData = this.data.slice();
+            for (var i = 0; i < Object.keys(resp).length; i++) {
+                copiedData.push(resp[i]);
+                this.dataChange.next(copiedData);
+            }
+
+        });
+    }
 }
 
 /**
@@ -73,25 +77,26 @@ export class ExampleDatabase {
  * should be rendered.
  */
 export class ExampleDataSource extends DataSource<any> {
-  constructor(private _exampleDatabase: ExampleDatabase, private _paginator: MdPaginator) {
-    super();
-  }
+    constructor(private _exampleDatabase:ExampleDatabase, private _paginator:MdPaginator) {
+        super();
+    }
 
-  /** Connect function called by the table to retrieve one stream containing the data to render. */
-  connect(): Observable<UserData[]> {
-    const displayDataChanges = [
-      this._exampleDatabase.dataChange,
-      this._paginator.page,
-    ];
+    /** Connect function called by the table to retrieve one stream containing the data to render. */
+    connect():Observable<UserData[]> {
+        const displayDataChanges = [
+            this._exampleDatabase.dataChange,
+            this._paginator.page,
+        ];
 
-    return Observable.merge(...displayDataChanges).map(() => {
-      const data = this._exampleDatabase.data.slice();
+        return Observable.merge(...displayDataChanges).map(() => {
+            const data = this._exampleDatabase.data.slice();
 
-      // Grab the page's slice of data.
-      const startIndex = this._paginator.pageIndex * this._paginator.pageSize;
-      return data.splice(startIndex, this._paginator.pageSize);
-    });
-  }
+            // Grab the page's slice of data.
+            const startIndex = this._paginator.pageIndex * this._paginator.pageSize;
+            return data.splice(startIndex, this._paginator.pageSize);
+        });
+    }
 
-  disconnect() {}
+    disconnect() {
+    }
 }
