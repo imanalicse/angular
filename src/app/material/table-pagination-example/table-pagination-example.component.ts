@@ -13,7 +13,7 @@ import {CommonService} from "../../services/common.service";
 
 @Component({
   selector: 'app-table-pagination-example',
-  template: './table-pagination-example.component.html',
+  templateUrl: './table-pagination-example.component.html',
   styleUrls: ['./table-pagination-example.component.css']
 })
 export class TablePaginationExampleComponent implements OnInit {

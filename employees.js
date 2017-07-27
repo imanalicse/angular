@@ -7,11 +7,15 @@ function generateEmployees () {
     var lastName = faker.name.lastName()
     var email = faker.internet.email()
     employees.push({
-      "id": id,
+      /*"id": id,
       "first_name": firstName,
       "last_name": lastName,
       "name": firstName +" "+lastName,
-      "email": email
+      "email": email,*/
+      "id": firstName,
+      "name": firstName +" "+lastName,
+      "progress": '22',
+      "color": email,
     })
   }
   return { "employees": employees }
