@@ -12,10 +12,10 @@ function generateEmployees () {
       "last_name": lastName,
       "name": firstName +" "+lastName,
       "email": email,*/
-      "id": firstName,
+      "id": id,
       "name": firstName +" "+lastName,
       "progress": '22',
-      "color": email,
+      "color": 'red',
     })
   }
   return { "employees": employees }
