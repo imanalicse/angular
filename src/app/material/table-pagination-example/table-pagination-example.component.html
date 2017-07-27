@@ -1,7 +1,3 @@
-<p>
-  table-pagination-example works!
-</p>
-
 <div class="example-container mat-elevation-z8">
 
   <md-table #table [dataSource]="dataSource">
@@ -15,22 +11,16 @@
       <md-cell *cdkCellDef="let row"> {{row.id}} </md-cell>
     </ng-container>
 
-    <!-- Progress Column -->
-    <ng-container cdkColumnDef="progress">
-      <md-header-cell *cdkHeaderCellDef> Progress </md-header-cell>
-      <md-cell *cdkCellDef="let row"> {{row.progress}}% </md-cell>
-    </ng-container>
-
     <!-- Name Column -->
     <ng-container cdkColumnDef="userName">
       <md-header-cell *cdkHeaderCellDef> Name </md-header-cell>
       <md-cell *cdkCellDef="let row"> {{row.name}} </md-cell>
     </ng-container>
 
-    <!-- Color Column -->
-    <ng-container cdkColumnDef="color">
-      <md-header-cell *cdkHeaderCellDef> Color </md-header-cell>
-      <md-cell *cdkCellDef="let row" [style.color]="row.color"> {{row.color}} </md-cell>
+    <!-- Name Column -->
+    <ng-container cdkColumnDef="Email">
+      <md-header-cell *cdkHeaderCellDef> Email </md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.email}} </md-cell>
     </ng-container>
 
     <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>

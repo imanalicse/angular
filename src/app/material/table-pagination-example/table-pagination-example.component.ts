@@ -18,63 +18,33 @@ import {CommonService} from "../../services/common.service";
 })
 export class TablePaginationExampleComponent implements OnInit {
 
-  displayedColumns = ['userId', 'userName', 'progress', 'color'];
+  displayedColumns = ['userId', 'userName', 'Email'];
   exampleDatabase = null; //new ExampleDatabase();
-  dataSource: ExampleDataSource | null;
+  dataSource: ExampleDataSource;
 
   @ViewChild(MdPaginator) paginator: MdPaginator;
-
-  /*dataChange: BehaviorSubject<UserData[]> = new BehaviorSubject<UserData[]>([]);
-  get data(): UserData[] {
-    return this.dataChange.value;
-  }*/
 
   constructor(private commonService: CommonService, private http: Http) {
     this.exampleDatabase = new ExampleDatabase(commonService);
   }
 
   ngOnInit():void {
+
     this.dataSource = new ExampleDataSource(this.exampleDatabase, this.paginator);
     //console.log(this.dataSource);
-
     console.log('exampleDatabase ', this.exampleDatabase);
-    //console.log('dataChange ', this.dataChange);
 
-    this.commonService.getDataList()
-        .subscribe(resp => {
-              //console.log(' get data ', resp);
-
-              /*const copiedData = this.data.slice();
-                for(var i=0; i<100;i++){
-                  //console.log(resp[i]);
-                  copiedData.push(resp[i]);
-                  this.dataChange.next(copiedData);
-                }*/
-            },
-            err => {
-              //console.log('err ', err)
-            }
-        );
   }
 
 }
 
-/** Constants used to fill up our data base. */
-const COLORS = ['maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple',
-  'fuchsia', 'lime', 'teal', 'aqua', 'blue', 'navy', 'black', 'gray'];
-const NAMES = ['Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack',
-  'Charlotte', 'Theodore', 'Isla', 'Oliver', 'Isabella', 'Jasper',
-  'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'];
-
 export interface UserData {
   id: any;
   name: string;
-  progress: string;
-  color: string;
+  email: string;
 }
 
 
-/** An example database that the data source uses to retrieve data for the table. */
 export class ExampleDatabase {
   /** Stream that emits whenever the data has been modified. */
   dataChange: BehaviorSubject<UserData[]> = new BehaviorSubject<UserData[]>([]);
@@ -87,36 +57,11 @@ export class ExampleDatabase {
 
       const copiedData = this.data.slice();
       for(var i=0; i<100;i++){
-        //console.log(resp[i]);
         copiedData.push(resp[i]);
         this.dataChange.next(copiedData);
       }
 
     });
-
-    // Fill up the database with 100 users.
-    //for (let i = 0; i < 100; i++) { this.addUser(); }
-  }
-
-  /** Adds a new user to the database. */
-  addUser() {
-    const copiedData = this.data.slice();
-    copiedData.push(this.createNewUser());
-    this.dataChange.next(copiedData);
-  }
-
-  /** Builds and returns a new User. */
-  private createNewUser() {
-    const name =
-        NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
-        NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
-
-    return {
-      id: (this.data.length + 1).toString(),
-      name: name,
-      progress: Math.round(Math.random() * 100).toString(),
-      color: COLORS[Math.round(Math.random() * (COLORS.length - 1))]
-    };
   }
 }
 
