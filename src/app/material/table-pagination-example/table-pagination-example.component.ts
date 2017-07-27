@@ -19,21 +19,21 @@ import {CommonService} from "../../services/common.service";
 export class TablePaginationExampleComponent implements OnInit {
 
     displayedColumns = ['userId', 'userName', 'Email'];
-    exampleDatabase = null; //new ExampleDatabase();
+    myDatabase = null; //new MyDatabase();
     dataSource:MyDataSource;
 
     @ViewChild(MdPaginator)
     paginator:MdPaginator;
 
     constructor(private commonService:CommonService, private http:Http) {
-        this.exampleDatabase = new MyDatabase(commonService);
+        this.myDatabase = new MyDatabase(commonService);
     }
 
     ngOnInit():void {
 
-        this.dataSource = new MyDataSource(this.exampleDatabase, this.paginator);
+        this.dataSource = new MyDataSource(this.myDatabase, this.paginator);
         //console.log(this.dataSource);
-        console.log('exampleDatabase ', this.exampleDatabase);
+        console.log('myDatabase ', this.myDatabase);
 
     }
 
