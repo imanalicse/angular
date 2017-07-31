@@ -7,18 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ParentComponent implements OnInit {
 
-  showMessage: string = 'Test message';
+  messageFormChild: string = '';
 
   messageToChild: string;
 
   constructor() { }
 
   ngOnInit() {
-    this.messageToChild = 'Hello World from Parent';
+    this.messageToChild = 'Message from Parent';
   }
 
-  onNotifyClick(message: string){
-    this.showMessage = message;
+  receiveMessage($event){
+    this.messageFormChild = $event;
   }
 
 }

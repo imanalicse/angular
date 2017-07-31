@@ -9,14 +9,14 @@ export class ChildComponent implements OnInit {
 
   @Input() messageFromParent: string;
 
-  @Output() notify: EventEmitter<string> = new EventEmitter<string>();
+  @Output() messageEvent = new EventEmitter<string>();
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  onClick(){
-    this.notify.emit("Message form child");
+  sendMessage(){
+    this.messageEvent.emit("Message form child");
   }
 }

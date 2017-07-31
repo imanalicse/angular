@@ -1,15 +1,13 @@
 <div class="row">
     <div class="col-md-9" style="background: #0a68b4; padding-bottom: 20px">
         Parent
-        <h4>{{showMessage}}</h4>
-
-        {{messageToChild}}
+        <h4>{{messageFormChild}}</h4>
         <!--Child Area-->
         <div class="row" style="margin-top: 50px">
             <div class="col-md-2"></div>
             <div class="col-md-6" style="background: #CCCCCC">
                 <h3>Child</h3>
-                <app-child (notify)="onNotifyClick($event)" [messageFromParent]="messageToChild"></app-child>
+                <app-child (messageEvent)="receiveMessage($event)" [messageFromParent]="messageToChild"></app-child>
             </div>
         </div>
     </div>
