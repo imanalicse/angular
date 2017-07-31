@@ -8,8 +8,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class ChildComponent implements OnInit {
 
   @Input() messageFromParent: string;
-
   @Output() messageEvent = new EventEmitter<string>();
+
+  message: string = "Message from child using @ViewChild decorator";
 
   constructor() { }
 
@@ -17,6 +18,6 @@ export class ChildComponent implements OnInit {
   }
 
   sendMessage(){
-    this.messageEvent.emit("Message form child");
+    this.messageEvent.emit("Message from child using @Output decorator and EventEmitter");
   }
 }
