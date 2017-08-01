@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {CommonService} from "app/services/common.service";
 
 @Component({
   selector: 'app-child',
@@ -11,10 +12,15 @@ export class ChildComponent implements OnInit {
   @Output() messageEvent = new EventEmitter<string>();
 
   message: string = "Message from child using @ViewChild decorator";
+  commonMessage: string;
 
-  constructor() { }
+  constructor(private commonService: CommonService) { }
 
   ngOnInit() {
+
+    this.commonService.messageSource.subscribe(data=>{
+      this.commonMessage = data;
+    })
   }
 
   sendMessage(){
