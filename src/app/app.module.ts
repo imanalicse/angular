@@ -15,6 +15,7 @@ import { ParentComponent } from './communication/parent/parent.component';
 import { ChildComponent } from './communication/child/child.component';
 import {CommonService} from "./services/common.service";
 import { MyTabsComponent } from './material/my-tabs/my-tabs.component';
+import { SiblingComponent } from './communication/sibling/sibling.component';
 
 @NgModule({
     imports: [
@@ -43,7 +44,8 @@ import { MyTabsComponent } from './material/my-tabs/my-tabs.component';
         TablePaginationExampleComponent,
         ParentComponent,
         ChildComponent,
-        MyTabsComponent
+        MyTabsComponent,
+        SiblingComponent
     ],
     providers: [CommonService],
     bootstrap: [AppComponent]
