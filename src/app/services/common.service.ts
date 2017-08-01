@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 @Injectable()
 export class CommonService {
 
-    messageSource = new BehaviorSubject<string>('Default message from common service');
+    messageSource = new BehaviorSubject<string>('Default message from common service using BehaviorSubject');
     //currentMessage = this.messageSource.asObservable();
 
     constructor(private http: Http) { }

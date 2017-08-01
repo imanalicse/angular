@@ -1,13 +1,13 @@
 <div class="row">
-    <div class="col-md-9" style="background: #0a68b4; padding-bottom: 20px">
+    <div class="col-md-8" style="background: #0a68b4; padding-bottom: 20px">
         <h2>Parent</h2>
         <div><strong>{{messageFormChild}}</strong></div>
         <div><strong>{{viewMessage}}</strong></div>
-
+        <div><strong>{{commonMessage}}</strong></div>
         <!--Child Area-->
         <div class="row" style="margin-top: 50px">
             <div class="col-md-2"></div>
-            <div class="col-md-6" style="background: #CCCCCC;padding-bottom: 20px;">
+            <div class="col-md-8" style="background: #CCCCCC;padding-bottom: 20px;">
                 <h3>Child</h3>
                 <app-child (messageEvent)="receiveMessage($event)" [messageFromParent]="messageToChild"></app-child>
             </div>
@@ -15,7 +15,7 @@
     </div>
 
     <!--Sibling-->
-    <div class="col-md-3" style="background: #dd9d12">
+    <div class="col-md-4" style="background: #b0a68b">
         Sibling
     </div>
 </div>
